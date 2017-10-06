@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Nested XML Demo", "Nested XML Demo\Nested XML Demo.dtproj", "{5546BF84-0788-4B8C-AB78-17142D9BF101}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "NestedXMLDemo", "NestedXMLDemo\NestedXMLDemo.sqlproj", "{C31646E6-8072-4512-8D18-5A33DFD8B3D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5546BF84-0788-4B8C-AB78-17142D9BF101}.Debug|Any CPU.ActiveCfg = Development
+		{5546BF84-0788-4B8C-AB78-17142D9BF101}.Debug|Any CPU.Build.0 = Development
+		{5546BF84-0788-4B8C-AB78-17142D9BF101}.Development|Any CPU.ActiveCfg = Development
+		{5546BF84-0788-4B8C-AB78-17142D9BF101}.Development|Any CPU.Build.0 = Development
+		{5546BF84-0788-4B8C-AB78-17142D9BF101}.Release|Any CPU.ActiveCfg = Development
+		{5546BF84-0788-4B8C-AB78-17142D9BF101}.Release|Any CPU.Build.0 = Development
+		{C31646E6-8072-4512-8D18-5A33DFD8B3D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C31646E6-8072-4512-8D18-5A33DFD8B3D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C31646E6-8072-4512-8D18-5A33DFD8B3D0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C31646E6-8072-4512-8D18-5A33DFD8B3D0}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{C31646E6-8072-4512-8D18-5A33DFD8B3D0}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{C31646E6-8072-4512-8D18-5A33DFD8B3D0}.Development|Any CPU.Deploy.0 = Debug|Any CPU
+		{C31646E6-8072-4512-8D18-5A33DFD8B3D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C31646E6-8072-4512-8D18-5A33DFD8B3D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C31646E6-8072-4512-8D18-5A33DFD8B3D0}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

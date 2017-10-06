@@ -1,0 +1,10 @@
+﻿CREATE PROCEDURE [dbo].[TruncateTables]
+AS
+BEGIN
+	BEGIN TRANSACTION;
+
+	DELETE FROM [dbo].[Address];
+	DELETE FROM [dbo].[Person];
+
+	COMMIT TRANSACTION;
+END

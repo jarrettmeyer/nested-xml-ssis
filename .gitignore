@@ -1,0 +1,7 @@
+*.dacpac
+*.database
+*.dbmdl
+*.jfm
+
+bin/
+obj/

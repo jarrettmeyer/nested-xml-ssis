@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Batch]
+(
+	[BatchId] INT NOT NULL IDENTITY(1, 1),
+	[StartTime] DATETIMEOFFSET NOT NULL, 
+    [Filename] VARCHAR(200) NOT NULL, 
+    CONSTRAINT [PK_dbo.Batch] PRIMARY KEY CLUSTERED (BatchId)
+)
