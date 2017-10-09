@@ -11,34 +11,10 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Import XML File"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{02464451-7F90-42C2-B28E-70721FD6B318}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{65725E81-88ED-4C1F-9220-734F283B1BCA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Nested XML Demo OLE]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{DEF0CD57-1252-4A7F-9550-16846D32A6A8}"
-      DTS:ObjectName="Nested XML Demo OLE">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=(local);Initial Catalog=NestedXMLDemo;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
-  <DTS:LogProviders>
-    <DTS:LogProvider
-      DTS:ConfigString="Nested XML Demo OLE"
-      DTS:CreationName="Microsoft.LogProviderSQLServer"
-      DTS:Description="Writes log entries for events to a SQL Server database"
-      DTS:DTSID="{3F4A459D-AA1C-4973-8D3F-D8D7B6E2A38D}"
-      DTS:ObjectName="SSIS log provider for SQL Server">
-      <DTS:ObjectData>
-        <InnerObject />
-      </DTS:ObjectData>
-    </DTS:LogProvider>
-  </DTS:LogProviders>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -49,6 +25,17 @@
       DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BDC7B5C5-FD9E-486C-8D51-EF544CDCF82F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Message"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -63,10 +50,27 @@
   <DTS:LoggingOptions
     DTS:FilterKind="0"
     DTS:LoggingMode="1">
-    <DTS:SelectedLogProviders>
-      <DTS:SelectedLogProvider
-        DTS:InstanceID="{3F4A459D-AA1C-4973-8D3F-D8D7B6E2A38D}" />
-    </DTS:SelectedLogProviders>
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
   </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
@@ -80,7 +84,30 @@
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:LoggingOptions
-        DTS:FilterKind="0" />
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -232,6 +259,137 @@
               </outputs>
             </component>
             <component
+              refId="Package\Import from XML file to tables\Address data conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Address data conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import from XML file to tables\Address data conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import from XML file to tables\Address data conversion.Inputs[Data Conversion Input].Columns[person_Id]"
+                      cachedDataType="ui8"
+                      cachedName="person_Id"
+                      lineageId="Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[person_Id]" />
+                    <inputColumn
+                      refId="Package\Import from XML file to tables\Address data conversion.Inputs[Data Conversion Input].Columns[line1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="line1"
+                      lineageId="Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[line1]" />
+                    <inputColumn
+                      refId="Package\Import from XML file to tables\Address data conversion.Inputs[Data Conversion Input].Columns[line2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="line2"
+                      lineageId="Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[line2]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Import from XML file to tables\Address data conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output].Columns[Copy of person_Id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output].Columns[Copy of person_Id]"
+                      name="Copy of person_Id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[person_Id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output].Columns[Copy of line1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output].Columns[Copy of line1]"
+                      name="Copy of line1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[line1]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output].Columns[Copy of line2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output].Columns[Copy of line2]"
+                      name="Copy of line2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[line2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Import from XML file to tables\Address data conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Import from XML file to tables\Address Join"
               componentClassID="Microsoft.MergeJoin"
               contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -310,7 +468,6 @@
               <outputs>
                 <output
                   refId="Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output]"
-                  isSorted="true"
                   name="Merge Join Output">
                   <outputColumns>
                     <outputColumn
@@ -324,20 +481,6 @@
                           dataType="System.Int32"
                           description="The input column associated with this output column"
                           name="InputColumnID">#{Package\Import from XML file to tables\Address Join.Inputs[Merge Join Left Input].Columns[person_Id]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[addresses_Id]"
-                      dataType="ui8"
-                      lineageId="Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[addresses_Id]"
-                      name="addresses_Id"
-                      sortKeyPosition="1">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Import from XML file to tables\Address Join.Inputs[Merge Join Left Input].Columns[addresses_Id]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -506,11 +649,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import from XML file to tables\Address Table"
+              refId="Package\Import from XML file to tables\Address Table Destination"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
               description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
-              name="Address Table"
+              name="Address Table Destination"
               usesDispositions="true"
               version="2">
               <properties>
@@ -541,7 +684,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Import from XML file to tables\Address Table.Connections[IDbConnection]"
+                  refId="Package\Import from XML file to tables\Address Table Destination.Connections[IDbConnection]"
                   connectionManagerID="{D4785B75-994B-4132-A816-B4B232C494BC}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Nested XML Demo ADONET]"
                   description="Managed connection manager"
@@ -549,60 +692,62 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input]"
+                  refId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input]"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="ADO NET Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].Columns[line1]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="line1"
-                      externalMetadataColumnId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].ExternalColumns[Line1]"
-                      lineageId="Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[line1]" />
-                    <inputColumn
-                      refId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].Columns[line2]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="line2"
-                      externalMetadataColumnId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].ExternalColumns[Line2]"
-                      lineageId="Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[line2]" />
-                    <inputColumn
-                      refId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].Columns[person_Id]"
-                      cachedDataType="ui8"
-                      cachedName="person_Id"
-                      externalMetadataColumnId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].ExternalColumns[PersonId]"
-                      lineageId="Package\Import from XML file to tables\Address Join.Outputs[Merge Join Output].Columns[person_Id]" />
-                    <inputColumn
-                      refId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].Columns[BatchId]"
+                      refId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].Columns[BatchId]"
                       cachedDataType="i4"
                       cachedName="BatchId"
-                      externalMetadataColumnId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].ExternalColumns[BatchId]"
+                      externalMetadataColumnId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[BatchId]"
                       lineageId="Package\Import from XML file to tables\Add custom columns to Address.Outputs[Derived Column Output].Columns[BatchId]" />
+                    <inputColumn
+                      refId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].Columns[Copy of person_Id]"
+                      cachedDataType="i8"
+                      cachedName="Copy of person_Id"
+                      externalMetadataColumnId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[PersonId]"
+                      lineageId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output].Columns[Copy of person_Id]" />
+                    <inputColumn
+                      refId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].Columns[Copy of line1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of line1"
+                      externalMetadataColumnId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[Line1]"
+                      lineageId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output].Columns[Copy of line1]" />
+                    <inputColumn
+                      refId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].Columns[Copy of line2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of line2"
+                      externalMetadataColumnId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[Line2]"
+                      lineageId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output].Columns[Copy of line2]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].ExternalColumns[PersonId]"
+                      refId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[PersonId]"
                       dataType="i8"
                       name="PersonId" />
                     <externalMetadataColumn
-                      refId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].ExternalColumns[Line1]"
+                      refId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[Line1]"
                       dataType="wstr"
                       length="50"
                       name="Line1" />
                     <externalMetadataColumn
-                      refId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].ExternalColumns[Line2]"
+                      refId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[Line2]"
                       dataType="wstr"
                       length="50"
                       name="Line2" />
                     <externalMetadataColumn
-                      refId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].ExternalColumns[InsertedDate]"
+                      refId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[InsertedDate]"
                       dataType="dbTimeStampOffset"
                       name="InsertedDate" />
                     <externalMetadataColumn
-                      refId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input].ExternalColumns[BatchId]"
+                      refId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[BatchId]"
                       dataType="i4"
                       name="BatchId" />
                   </externalMetadataColumns>
@@ -610,22 +755,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Import from XML file to tables\Address Table.Outputs[ADO NET Destination Error Output]"
+                  refId="Package\Import from XML file to tables\Address Table Destination.Outputs[ADO NET Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="ADO NET Destination Error Output"
-                  synchronousInputId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input]">
+                  synchronousInputId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import from XML file to tables\Address Table.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Import from XML file to tables\Address Table Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import from XML file to tables\Address Table.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import from XML file to tables\Address Table Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import from XML file to tables\Address Table.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import from XML file to tables\Address Table Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import from XML file to tables\Address Table.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import from XML file to tables\Address Table Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -890,6 +1035,166 @@
                           name="SortColumnId">#{Package\Import from XML file to tables\XML Source.Outputs[name].Columns[person_Id]}</property>
                       </properties>
                     </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import from XML file to tables\Person data conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Person data conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import from XML file to tables\Person data conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import from XML file to tables\Person data conversion.Inputs[Data Conversion Input].Columns[person_Id]"
+                      cachedDataType="ui8"
+                      cachedName="person_Id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[person_Id]" />
+                    <inputColumn
+                      refId="Package\Import from XML file to tables\Person data conversion.Inputs[Data Conversion Input].Columns[first_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="first_name"
+                      lineageId="Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[first_name]" />
+                    <inputColumn
+                      refId="Package\Import from XML file to tables\Person data conversion.Inputs[Data Conversion Input].Columns[middle_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="middle_name"
+                      lineageId="Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[middle_name]" />
+                    <inputColumn
+                      refId="Package\Import from XML file to tables\Person data conversion.Inputs[Data Conversion Input].Columns[last_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="last_name"
+                      lineageId="Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[last_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Import from XML file to tables\Person data conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of person_Id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of person_Id]"
+                      name="Copy of person_Id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[person_Id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of first_name]"
+                      name="Copy of first_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[first_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of middle_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of middle_name]"
+                      name="Copy of middle_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[middle_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of last_name]"
+                      name="Copy of last_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[last_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Import from XML file to tables\Person data conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1163,33 +1468,35 @@
                       externalMetadataColumnId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[BatchId]"
                       lineageId="Package\Import from XML file to tables\Add custom columns to Person.Outputs[Derived Column Output].Columns[BatchId]" />
                     <inputColumn
-                      refId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].Columns[person_Id]"
-                      cachedDataType="ui8"
-                      cachedName="person_Id"
-                      cachedSortKeyPosition="1"
+                      refId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].Columns[Copy of person_Id]"
+                      cachedDataType="i8"
+                      cachedName="Copy of person_Id"
                       externalMetadataColumnId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[PersonId]"
-                      lineageId="Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[person_Id]" />
+                      lineageId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of person_Id]" />
                     <inputColumn
-                      refId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].Columns[first_name]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="first_name"
+                      refId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].Columns[Copy of first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of first_name"
                       externalMetadataColumnId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[FirstName]"
-                      lineageId="Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[first_name]" />
+                      lineageId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of first_name]" />
                     <inputColumn
-                      refId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].Columns[middle_name]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="middle_name"
+                      refId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].Columns[Copy of middle_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of middle_name"
                       externalMetadataColumnId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[MiddleName]"
-                      lineageId="Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[middle_name]" />
+                      lineageId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of middle_name]" />
                     <inputColumn
-                      refId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].Columns[last_name]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="last_name"
+                      refId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].Columns[Copy of last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of last_name"
                       externalMetadataColumnId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input].ExternalColumns[LastName]"
-                      lineageId="Package\Import from XML file to tables\Person Join.Outputs[Merge Join Output].Columns[last_name]" />
+                      lineageId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output].Columns[Copy of last_name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1776,13 +2083,23 @@
               name="addresses"
               startId="Package\Import from XML file to tables\XML Source.Outputs[addresses]" />
             <path
-              refId="Package\Import from XML file to tables.Paths[Derived Column Output]"
+              refId="Package\Import from XML file to tables.Paths[Data Conversion Output]"
               endId="Package\Import from XML file to tables\Person Table Destination.Inputs[ADO NET Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Import from XML file to tables\Person data conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Import from XML file to tables.Paths[Data Conversion Output1]"
+              endId="Package\Import from XML file to tables\Address Table Destination.Inputs[ADO NET Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Import from XML file to tables\Address data conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Import from XML file to tables.Paths[Derived Column Output]"
+              endId="Package\Import from XML file to tables\Person data conversion.Inputs[Data Conversion Input]"
               name="Derived Column Output"
               startId="Package\Import from XML file to tables\Add custom columns to Person.Outputs[Derived Column Output]" />
             <path
               refId="Package\Import from XML file to tables.Paths[Derived Column Output1]"
-              endId="Package\Import from XML file to tables\Address Table.Inputs[ADO NET Destination Input]"
+              endId="Package\Import from XML file to tables\Address data conversion.Inputs[Data Conversion Input]"
               name="Derived Column Output"
               startId="Package\Import from XML file to tables\Add custom columns to Address.Outputs[Derived Column Output]" />
             <path
@@ -1830,6 +2147,38 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Record Batch ID"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{49A16AEF-CA65-4EDF-A728-8710FD7C1225}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Record Batch ID"
+      DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::Message] = &quot;Batch ID = &quot; + (DT_WSTR, 10)@[User::BatchId]" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Record completion time"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{61C00722-F93C-4503-93C3-CC2299D62B46}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Record completion time"
+      DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::Message] = &quot;Done at &quot; +  (DT_WSTR, 100)  GETDATE()" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Start New Batch"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -1841,7 +2190,8 @@
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:LoggingOptions
-        DTS:FilterKind="0" />
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{D4785B75-994B-4132-A816-B4B232C494BC}"
@@ -1878,7 +2228,8 @@
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:LoggingOptions
-        DTS:FilterKind="0" />
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{D4785B75-994B-4132-A816-B4B232C494BC}"
@@ -1899,10 +2250,26 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{F8DEA5D3-6DFD-4F32-B68F-BE6451187539}"
+      DTS:DTSID="{8FFEEDD3-A718-45DE-A683-6F33E3161120}"
       DTS:From="Package\Start New Batch"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Record Batch ID" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{C68008BD-5C2A-4B35-B846-9EE3A3D153B4}"
+      DTS:From="Package\Import from XML file to tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Record completion time" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{2D378CC5-15E1-4383-8E19-AA596109DF07}"
+      DTS:From="Package\Record Batch ID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
       DTS:To="Package\Truncate Tables" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -1916,18 +2283,30 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="221,42"
           Id="Package\Import from XML file to tables"
-          TopLeft="5.50000000000003,209.5" />
+          TopLeft="5.50000000000004,311.5" />
         <NodeLayout
-          Size="163,42"
+          Size="156,42"
+          Id="Package\Record Batch ID"
+          TopLeft="38,107.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Record completion time"
+          TopLeft="21,413.5" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Start New Batch"
+          TopLeft="38.5,5.5" />
+        <NodeLayout
+          Size="155,42"
           Id="Package\Truncate Tables"
-          TopLeft="34.5,107.5" />
+          TopLeft="38.5,209.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="116,149.5">
+          TopLeft="116,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1947,13 +2326,53 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Start New Batch"
-          TopLeft="38.5,5.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="116,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="116,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="116,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1982,156 +2401,66 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="129,42"
-          Id="Package\Import from XML file to tables\Name Sort"
-          TopLeft="199.5,107.5" />
-        <NodeLayout
           Size="133,42"
           Id="Package\Import from XML file to tables\Person Sort"
-          TopLeft="5.5,107.5" />
-        <NodeLayout
-          Size="224,42"
-          Id="Package\Import from XML file to tables\Add custom columns to Person"
-          TopLeft="152,311.5" />
+          TopLeft="415.5,107.5" />
         <NodeLayout
           Size="134,42"
           Id="Package\Import from XML file to tables\XML Source"
-          TopLeft="397,5.49999999999989" />
+          TopLeft="415,5.5" />
         <NodeLayout
-          Size="145,42"
-          Id="Package\Import from XML file to tables\Address Table"
-          TopLeft="479.5,413.5" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Import from XML file to tables\Address Sort"
-          TopLeft="599.5,107.5" />
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Import from XML file to tables\Person Join"
-          TopLeft="197.5,209.5" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\Import from XML file to tables\Person Table Destination"
-          TopLeft="166,413.5" />
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Import from XML file to tables\Address Join"
-          TopLeft="483,209.5" />
+          Size="189,42"
+          Id="Package\Import from XML file to tables\Person data conversion"
+          TopLeft="478.5,413.5" />
         <NodeLayout
           Size="149,42"
           Id="Package\Import from XML file to tables\Addresses Sort"
-          TopLeft="389.5,107.5" />
+          TopLeft="5.5,107.5" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Import from XML file to tables\Address data conversion"
+          TopLeft="188,413.5" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Import from XML file to tables\Address Sort"
+          TopLeft="215.5,107.5" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Import from XML file to tables\Person Join"
+          TopLeft="506.5,209.5" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Import from XML file to tables\Add custom columns to Person"
+          TopLeft="461,311.5" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Import from XML file to tables\Name Sort"
+          TopLeft="609.5,107.5" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Import from XML file to tables\Person Table Destination"
+          TopLeft="475,515.5" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Import from XML file to tables\Address Table Destination"
+          TopLeft="184,515.5" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Import from XML file to tables\Add custom columns to Address"
+          TopLeft="170,311.5" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Import from XML file to tables\Address Join"
+          TopLeft="216,209.5" />
         <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[Sort Output2]"
-          TopLeft="464,149.5">
+          Id="Package\Import from XML file to tables.Paths[addresses]"
+          TopLeft="444.2,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="66.3333333333334,60"
+              EndConnector="-364.2,60.0000000000001"
               Start="0,0"
-              End="66.3333333333334,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5873925501433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5873925501433"
-                    Point2="0,35.5873925501433"
-                    Point3="4,35.5873925501433" />
-                  <mssgle:LineSegment
-                    End="62.3333333333334,35.5873925501433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="62.3333333333334,35.5873925501433"
-                    Point2="66.3333333333334,35.5873925501433"
-                    Point3="66.3333333333334,39.5873925501433" />
-                  <mssgle:LineSegment
-                    End="66.3333333333334,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[Sort Output1]"
-          TopLeft="264,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="20.8333333333333,60"
-              Start="0,0"
-              End="20.8333333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5720653789004" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5720653789004"
-                    Point2="0,35.5720653789004"
-                    Point3="4,35.5720653789004" />
-                  <mssgle:LineSegment
-                    End="16.8333333333333,35.5720653789004" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16.8333333333333,35.5720653789004"
-                    Point2="20.8333333333333,35.5720653789004"
-                    Point3="20.8333333333333,39.5720653789004" />
-                  <mssgle:LineSegment
-                    End="20.8333333333333,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[Sort Output]"
-          TopLeft="72,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="171.166666666667,59.9999999999999"
-              Start="0,0"
-              End="171.166666666667,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5720653789004" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5720653789004"
-                    Point2="0,35.5720653789004"
-                    Point3="4,35.5720653789004" />
-                  <mssgle:LineSegment
-                    End="167.166666666667,35.5720653789004" />
-                  <mssgle:CubicBezierSegment
-                    Point1="167.166666666667,35.5720653789004"
-                    Point2="171.166666666667,35.5720653789004"
-                    Point3="171.166666666667,39.5720653789004" />
-                  <mssgle:LineSegment
-                    End="171.166666666667,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[person]"
-          TopLeft="426.2,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-354.2,60.0000000000001"
-              Start="0,0"
-              End="-354.2,52.5000000000001">
+              End="-364.2,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2142,32 +2471,32 @@
                     Point2="0,18.2120582120582"
                     Point3="-4,18.2120582120582" />
                   <mssgle:LineSegment
-                    End="-350.2,18.2120582120582" />
+                    End="-360.2,18.2120582120582" />
                   <mssgle:CubicBezierSegment
-                    Point1="-350.2,18.2120582120582"
-                    Point2="-354.2,18.2120582120582"
-                    Point3="-354.2,22.2120582120582" />
+                    Point1="-360.2,18.2120582120582"
+                    Point2="-364.2,18.2120582120582"
+                    Point3="-364.2,22.2120582120582" />
                   <mssgle:LineSegment
-                    End="-354.2,52.5000000000001" />
+                    End="-364.2,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-192.3835546875,23.2120582120582,30.567109375,9.6171875"
+              BoundingBox="-204.76962890625,23.2120582120582,45.3392578125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[name]"
-          TopLeft="451.4,47.4999999999999">
+          Id="Package\Import from XML file to tables.Paths[address]"
+          TopLeft="469.4,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-187.4,60"
+              EndConnector="-184.4,60"
               Start="0,0"
-              End="-187.4,52.5">
+              End="-184.4,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2178,37 +2507,49 @@
                     Point2="0,26.8863261943987"
                     Point3="-4,26.8863261943987" />
                   <mssgle:LineSegment
-                    End="-183.4,26.8863261943987" />
+                    End="-180.4,26.8863261943987" />
                   <mssgle:CubicBezierSegment
-                    Point1="-183.4,26.8863261943987"
-                    Point2="-187.4,26.8863261943987"
-                    Point3="-187.4,30.8863261943987" />
+                    Point1="-180.4,26.8863261943987"
+                    Point2="-184.4,26.8863261943987"
+                    Point3="-184.4,30.8863261943987" />
                   <mssgle:LineSegment
-                    End="-187.4,52.5" />
+                    End="-184.4,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-106.48296875,31.8863261943987,25.5659375,7.7568359375"
+              BoundingBox="-110.00962890625,31.8863261943987,35.6192578125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[Merge Join Output]"
-          TopLeft="264,251.5">
+          Id="Package\Import from XML file to tables.Paths[Sort Output3]"
+          TopLeft="285,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="21.6666666666666,60"
               Start="0,0"
-              End="0,52.5">
+              End="21.6666666666666,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,31.5873925501433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5873925501433"
+                    Point2="0,35.5873925501433"
+                    Point3="4,35.5873925501433" />
+                  <mssgle:LineSegment
+                    End="17.6666666666666,35.5873925501433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.6666666666666,35.5873925501433"
+                    Point2="21.6666666666666,35.5873925501433"
+                    Point3="21.6666666666666,39.5873925501433" />
+                  <mssgle:LineSegment
+                    End="21.6666666666666,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2218,19 +2559,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[Derived Column Output]"
-          TopLeft="264,353.5">
+          Id="Package\Import from XML file to tables.Paths[Sort Output2]"
+          TopLeft="80,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="183.333333333333,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="183.333333333333,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,31.5873925501432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5873925501432"
+                    Point2="0,35.5873925501432"
+                    Point3="4,35.5873925501432" />
+                  <mssgle:LineSegment
+                    End="179.333333333333,35.5873925501432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="179.333333333333,35.5873925501432"
+                    Point2="183.333333333333,35.5873925501432"
+                    Point3="183.333333333333,39.5873925501432" />
+                  <mssgle:LineSegment
+                    End="183.333333333333,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2240,8 +2593,76 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[addresses]"
-          TopLeft="476.6,47.4999999999999">
+          Id="Package\Import from XML file to tables.Paths[Sort Output1]"
+          TopLeft="674,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-80.1666666666666,60"
+              Start="0,0"
+              End="-80.1666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5720653789005" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5720653789005"
+                    Point2="0,35.5720653789005"
+                    Point3="-4,35.5720653789005" />
+                  <mssgle:LineSegment
+                    End="-76.1666666666666,35.5720653789005" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-76.1666666666666,35.5720653789005"
+                    Point2="-80.1666666666666,35.5720653789005"
+                    Point3="-80.1666666666666,39.5720653789005" />
+                  <mssgle:LineSegment
+                    End="-80.1666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import from XML file to tables.Paths[Sort Output]"
+          TopLeft="482,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.1666666666666,60"
+              Start="0,0"
+              End="70.1666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5720653789005" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5720653789005"
+                    Point2="0,35.5720653789005"
+                    Point3="4,35.5720653789005" />
+                  <mssgle:LineSegment
+                    End="66.1666666666666,35.5720653789005" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.1666666666666,35.5720653789005"
+                    Point2="70.1666666666666,35.5720653789005"
+                    Point3="70.1666666666666,39.5720653789005" />
+                  <mssgle:LineSegment
+                    End="70.1666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import from XML file to tables.Paths[person]"
+          TopLeft="494.6,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2271,19 +2692,19 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-28.96962890625,31.8863261943987,45.3392578125,9.7490234375"
+              BoundingBox="-21.5835546875,31.8863261943987,30.567109375,9.6171875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[address]"
-          TopLeft="501.8,47.4999999999999">
+          Id="Package\Import from XML file to tables.Paths[name]"
+          TopLeft="519.8,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="167.2,60"
+              EndConnector="154.2,60"
               Start="0,0"
-              End="167.2,52.5">
+              End="154.2,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2294,49 +2715,37 @@
                     Point2="0,18.2120582120582"
                     Point3="4,18.2120582120582" />
                   <mssgle:LineSegment
-                    End="163.2,18.2120582120582" />
+                    End="150.2,18.2120582120582" />
                   <mssgle:CubicBezierSegment
-                    Point1="163.2,18.2120582120582"
-                    Point2="167.2,18.2120582120582"
-                    Point3="167.2,22.2120582120582" />
+                    Point1="150.2,18.2120582120582"
+                    Point2="154.2,18.2120582120582"
+                    Point3="154.2,22.2120582120582" />
                   <mssgle:LineSegment
-                    End="167.2,52.5" />
+                    End="154.2,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="65.79037109375,23.2120582120582,35.6192578125,9.7490234375"
+              BoundingBox="64.31703125,23.2120582120582,25.5659375,7.7568359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[Sort Output3]"
-          TopLeft="669,149.5">
+          Id="Package\Import from XML file to tables.Paths[Merge Join Output1]"
+          TopLeft="285,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-95.3333333333334,60"
+              EndConnector="0,60"
               Start="0,0"
-              End="-95.3333333333334,52.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5873925501433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5873925501433"
-                    Point2="0,35.5873925501433"
-                    Point3="-4,35.5873925501433" />
-                  <mssgle:LineSegment
-                    End="-91.3333333333334,35.5873925501433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-91.3333333333334,35.5873925501433"
-                    Point2="-95.3333333333334,35.5873925501433"
-                    Point3="-95.3333333333334,39.5873925501433" />
-                  <mssgle:LineSegment
-                    End="-95.3333333333334,52.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2345,13 +2754,9 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="230,42"
-          Id="Package\Import from XML file to tables\Add custom columns to Address"
-          TopLeft="437,311.5" />
         <EdgeLayout
-          Id="Package\Import from XML file to tables.Paths[Merge Join Output1]"
-          TopLeft="552,251.5">
+          Id="Package\Import from XML file to tables.Paths[Merge Join Output]"
+          TopLeft="573,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2373,7 +2778,73 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Import from XML file to tables.Paths[Derived Column Output1]"
-          TopLeft="552,353.5">
+          TopLeft="285,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import from XML file to tables.Paths[Derived Column Output]"
+          TopLeft="573,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import from XML file to tables.Paths[Data Conversion Output1]"
+          TopLeft="285,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import from XML file to tables.Paths[Data Conversion Output]"
+          TopLeft="573,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2397,7 +2868,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Import from XML file to tables\Address Table">
+    design-time-name="Package\Import from XML file to tables\Person Table Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2405,7 +2876,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import from XML file to tables\Person Table Destination">
+    design-time-name="Package\Import from XML file to tables\Address Table Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
